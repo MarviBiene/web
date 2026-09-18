@@ -90,6 +90,12 @@ function transformContractDisplayFields(
       dateStyle: 'short',
       timeStyle: 'short',
     }).format(new Date(contract.formation)),
+    badSince: contract.badSince
+      ? Intl.DateTimeFormat('en-US', {
+          dateStyle: 'short',
+          timeStyle: 'short',
+        }).format(new Date(contract.badSince))
+      : null,
     proofHeight: contract.proofHeight.toLocaleString(),
     expirationHeight: contract.expirationHeight.toLocaleString(),
     nextPrune: Intl.DateTimeFormat('en-US', {

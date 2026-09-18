@@ -31,6 +31,22 @@ export function MetricsRepair() {
             value={<Skeleton className="h-12 w-[150px]" />}
           />
           <InfoRow
+            label="Worst Slab Health"
+            value={<Skeleton className="h-12 w-[150px]" />}
+          />
+          <InfoRow
+            label="Good Shards"
+            value={<Skeleton className="h-12 w-[150px]" />}
+          />
+          <InfoRow
+            label="Degraded Shards"
+            value={<Skeleton className="h-12 w-[150px]" />}
+          />
+          <InfoRow
+            label="Recovery Margin"
+            value={<Skeleton className="h-12 w-[150px]" />}
+          />
+          <InfoRow
             label="Degraded Slabs"
             value={<Skeleton className="h-12 w-[150px]" />}
           />
@@ -74,6 +90,38 @@ export function MetricsRepair() {
           <InfoRow
             label="Repair Threshold"
             value={`${stats.repairThreshold.toLocaleString()} sectors`}
+          />
+          <InfoRow
+            label="Worst Slab Health"
+            value={
+              stats.worstSlabTotalSectors > 0
+                ? `${stats.worstSlabHealth.toFixed(1)}%`
+                : '—'
+            }
+          />
+          <InfoRow
+            label="Good Shards"
+            value={
+              stats.worstSlabTotalSectors > 0
+                ? `${stats.worstSlabGoodSectors.toLocaleString()} / ${stats.worstSlabTotalSectors.toLocaleString()}`
+                : '—'
+            }
+          />
+          <InfoRow
+            label="Degraded Shards"
+            value={
+              stats.worstSlabTotalSectors > 0
+                ? stats.worstSlabDegradedSectors.toLocaleString()
+                : '—'
+            }
+          />
+          <InfoRow
+            label="Recovery Margin"
+            value={
+              stats.worstSlabTotalSectors > 0
+                ? `${stats.worstSlabRecoveryMargin >= 0 ? '+' : ''}${stats.worstSlabRecoveryMargin.toLocaleString()} shards`
+                : '—'
+            }
           />
           <InfoRow
             label="Degraded Slabs"

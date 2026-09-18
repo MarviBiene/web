@@ -395,6 +395,13 @@ export type AdminStatsSectorsResponse = {
   deferredMigrationSlabs: number
   degradedSectors: number
   retryingSlabs: number
+  worstSlabHealth: number
+  worstSlabGoodSectors: number
+  worstSlabTotalSectors: number
+  worstSlabMinShards: number
+  worstSlabDegradedSectors: number
+  worstSlabRecoveryMargin: number
+  worstSlabID?: string
   stuckSlabs: number
   unrecoverableSlabs: number
   migrated: number

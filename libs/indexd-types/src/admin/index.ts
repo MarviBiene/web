@@ -387,6 +387,14 @@ export type AdminStatsSectorsParams = void
 export type AdminStatsSectorsPayload = void
 export type AdminStatsSectorsResponse = {
   slabs: number
+  repairThreshold: number
+  degradedSlabs: number
+  waitingForThresholdSlabs: number
+  toMigrateSlabs: number
+  degradedSectors: number
+  retryingSlabs: number
+  stuckSlabs: number
+  unrecoverableSlabs: number
   migrated: number
   pinned: number
   unpinnable: number

@@ -87,6 +87,21 @@ export function SidePanelContract() {
                 label="Status"
                 value={<StatusBadge variant={contract.good ? 'good' : 'bad'} />}
               />
+              {!contract.good && (
+                <>
+                  <InfoRow
+                    label="Bad Reason"
+                    value={
+                      contract.badReason ||
+                      'Unknown (marked bad before reason tracking)'
+                    }
+                  />
+                  <InfoRow
+                    label="Bad Since"
+                    value={contract.displayFields.badSince || 'Unknown'}
+                  />
+                </>
+              )}
               <InfoRow
                 label="Host Country"
                 value={
@@ -115,7 +130,7 @@ export function SidePanelContract() {
               ))}
             </div>
           </SidePanelSection>
-          <SidePanelSection heading="Usability">
+          <SidePanelSection heading="Host Usability">
             <UsabilityBadges
               usable={host?.usable || false}
               usability={host?.usability}

@@ -71,6 +71,7 @@ export type ContractData = Contract & {
     spendFreeSector: CurrencyDisplayProps
     spendFundAccount: CurrencyDisplayProps
     formation: string
+    badSince: string | null
     proofHeight: string
     expirationHeight: string
     nextPrune: string

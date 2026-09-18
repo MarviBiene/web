@@ -55,6 +55,8 @@ export type Contract = {
   contractPrice: Currency
   minerFee: Currency
   good: boolean
+  badReason?: string
+  badSince?: string | null
   state: ContractState
   spending: ContractSpending
 }

@@ -1,5 +1,6 @@
 import { Heading, Panel } from '@siafoundation/design-system'
 import { MetricsSectors } from './MetricsSectors'
+import { MetricsRepair } from './MetricsRepair'
 import { MetricsAccounts } from './MetricsAccounts'
 import { MetricsContracts } from './MetricsContracts'
 import { MetricsConnectKeys } from './MetricsConnectKeys'
@@ -29,6 +30,12 @@ export function Metrics() {
         <Heading size="24">Sectors</Heading>
         <div className="w-[400px]">
           <MetricsSectors />
+        </div>
+      </Panel>
+      <Panel className="flex flex-col gap-5 p-5">
+        <Heading size="24">Repair</Heading>
+        <div className="w-[400px]">
+          <MetricsRepair />
         </div>
       </Panel>
     </div>

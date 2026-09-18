@@ -391,6 +391,8 @@ export type AdminStatsSectorsResponse = {
   degradedSlabs: number
   waitingForThresholdSlabs: number
   toMigrateSlabs: number
+  readyToMigrateSlabs: number
+  deferredMigrationSlabs: number
   degradedSectors: number
   retryingSlabs: number
   stuckSlabs: number

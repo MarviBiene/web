@@ -43,6 +43,14 @@ export function MetricsSectors() {
             value={<Skeleton className="h-12 w-[150px]" />}
           />
           <InfoRow
+            label="Ready to Migrate"
+            value={<Skeleton className="h-12 w-[150px]" />}
+          />
+          <InfoRow
+            label="Deferred / Backoff"
+            value={<Skeleton className="h-12 w-[150px]" />}
+          />
+          <InfoRow
             label="Waiting for Threshold"
             value={<Skeleton className="h-12 w-[150px]" />}
           />
@@ -107,6 +115,14 @@ export function MetricsSectors() {
           <InfoRow
             label="To Migrate Slabs"
             value={stats.toMigrateSlabs.toLocaleString()}
+          />
+          <InfoRow
+            label="Ready to Migrate"
+            value={stats.readyToMigrateSlabs.toLocaleString()}
+          />
+          <InfoRow
+            label="Deferred / Backoff"
+            value={stats.deferredMigrationSlabs.toLocaleString()}
           />
           <InfoRow
             label="Waiting for Threshold"

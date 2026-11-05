@@ -54,6 +54,7 @@ export function getFilterLabel(filter: ContractFilter): string {
 }
 
 export type ContractData = Contract & {
+  hostLifecycle?: 'healthy' | 'quarantine' | 'permanentBan'
   id: string
   exchange?: {
     currency: CurrencyOption

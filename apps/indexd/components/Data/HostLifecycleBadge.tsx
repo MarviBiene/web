@@ -12,7 +12,7 @@ export function HostLifecycleBadge({
   // Keep the existing neutral appearance for hosts without a contract;
   // a tooltip still exposes an operator ban or temporary quarantine.
   const inactive = !activeContract
-  const variant = inactive
+  const variant = inactive || !lifecycle
     ? 'gray'
     : lifecycle === 'permanentBan'
       ? 'red'
@@ -21,13 +21,17 @@ export function HostLifecycleBadge({
         : 'green'
   const label = inactive
     ? 'No contract'
-    : lifecycle === 'permanentBan'
+    : !lifecycle
+      ? 'Unknown'
+      : lifecycle === 'permanentBan'
       ? 'Permanent ban'
       : lifecycle === 'quarantine'
         ? 'Quarantine'
         : 'Healthy'
   const explanation =
-    lifecycle === 'permanentBan'
+    !lifecycle
+      ? 'Lifecycle status requires the matching enhanced indexd backend.'
+      : lifecycle === 'permanentBan'
       ? 'Operator-controlled ban. Manual unblocking required.'
       : lifecycle === 'quarantine'
         ? 'Temporary usability failure. Existing paid contract is retained.'

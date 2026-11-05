@@ -20,6 +20,7 @@ export function transformContract({
   const datum: ContractData = {
     ...contract,
     id: contract.id,
+    hostLifecycle: (contract as Contract & { hostLifecycle?: ContractData['hostLifecycle'] }).hostLifecycle,
     exchange,
     displayFields: transformContractDisplayFields(
       contract,

@@ -64,6 +64,8 @@ export type HostLocation =
     }
 
 export type HostData = Host & {
+  lifecycle?: 'healthy' | 'quarantine' | 'permanentBan'
+  activeContract?: boolean
   id: string
   usable: boolean
   location: HostLocation

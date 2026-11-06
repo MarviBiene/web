@@ -15,8 +15,10 @@ export function useHosts() {
   const params = useMemo(() => {
     const filters: AdminHostsParams = { offset, limit }
     const usable = columnFilters.find((f) => f.id === 'usable')?.value
-    // Default to usable: true unless user explicitly sets it to false.
-    filters.usable = usable !== undefined ? usable : true
+    // Show quarantine and permanent-ban hosts by default, too.
+    if (usable !== undefined) {
+      filters.usable = usable
+    }
     const blocked = columnFilters.find((f) => f.id === 'blocked')?.value
     if (blocked !== undefined) {
       filters.blocked = blocked

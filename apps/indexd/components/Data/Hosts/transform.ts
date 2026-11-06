@@ -36,6 +36,9 @@ export function transformHost({
   const datum: HostData = {
     ...host,
     id: host.publicKey,
+    lifecycle: (host as Host & { lifecycle?: HostData['lifecycle'] }).lifecycle ??
+      (host.blocked ? 'permanentBan' : Object.values(host.usability).every(Boolean) ? 'healthy' : 'quarantine'),
+    activeContract: (host as Host & { activeContract?: boolean }).activeContract,
     usable: Object.values(host.usability).every((value) => value),
     location,
     exchange,

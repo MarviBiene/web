@@ -1,4 +1,5 @@
 import { type ContractData } from './types'
+import { HostLifecycleBadge } from '../HostLifecycleBadge'
 import {
   Badge,
   Text,
@@ -50,6 +51,18 @@ export const contractsColumns: DataTableColumnDef<
       filterLabelPositive: 'Status is good',
       filterLabelNegative: 'Status is bad',
     },
+  },
+  {
+    id: 'hostLifecycle',
+    header: ({ table, column }) => (
+      <TableHeader table={table} column={column}>
+        Host Status
+      </TableHeader>
+    ),
+    cell: ({ row }) => (
+      <HostLifecycleBadge lifecycle={row.original.hostLifecycle} />
+    ),
+    meta: { className: 'justify-end', ...smallColumnWidth },
   },
   {
     id: 'state',

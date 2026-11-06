@@ -57,6 +57,7 @@ export function MetricsContracts() {
             label="Bad Contracts"
             value={stats.badContracts.toLocaleString()}
           />
+          <ContractLifecycleMetrics stats={stats} />
           <InfoRow
             label="Renewing Contracts"
             value={stats.renewing.toLocaleString()}
@@ -69,5 +70,32 @@ export function MetricsContracts() {
         </div>
       )}
     />
+  )
+}
+
+
+// These fields are supplied by the enhanced indexd backend. Older indexd
+// deployments continue to render their original statistics unchanged.
+function ContractLifecycleMetrics({ stats }: { stats: unknown }) {
+  const record = stats as Record<string, unknown>
+  const count = (key: string) => typeof record[key] === 'number'
+    ? (record[key] as number).toLocaleString()
+    : '—'
+  const bytes = (key: string) => typeof record[key] === 'number'
+    ? humanBytes(record[key] as number)
+    : '—'
+  if (typeof record.healthyContracts !== 'number') {
+    return null
+  }
+  return (
+    <>
+      <InfoRow label="Healthy Contracts" value={count('healthyContracts')} />
+      <InfoRow label="Quarantine Contracts" value={count('quarantineContracts')} />
+      <InfoRow label="Permanent Ban Contracts" value={count('permanentBanContracts')} />
+      <InfoRow label="Other Bad Contracts" value={count('otherBadContracts')} />
+      <InfoRow label="Healthy Capacity" value={bytes('healthyCapacity')} />
+      <InfoRow label="Quarantine Capacity" value={bytes('quarantineCapacity')} />
+      <InfoRow label="Permanent Ban Capacity" value={bytes('permanentBanCapacity')} />
+    </>
   )
 }

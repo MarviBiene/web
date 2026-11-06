@@ -7,6 +7,7 @@ import {
 } from '@siafoundation/design-system'
 import { CheckmarkFilled16, CloseFilled16 } from '@siafoundation/react-icons'
 import { HostData } from './types'
+import { HostLifecycleBadge } from '../HostLifecycleBadge'
 import { TableHeader } from '../ColumnHeader'
 import { UsabilityBadges, UsabilityIndicator } from '../UsabilityBadges'
 import { ColumnUsableFilter } from './columnFilters/ColumnUsableFilter'
@@ -38,6 +39,21 @@ export const columns: DataTableColumnDef<HostData, AdminHostsSortBy>[] = [
       />
     ),
     meta: { ...hashColumnWidth },
+  },
+  {
+    id: 'lifecycle',
+    header: ({ table, column }) => (
+      <TableHeader table={table} column={column}>
+        Host Status
+      </TableHeader>
+    ),
+    cell: ({ row }) => (
+      <HostLifecycleBadge
+        lifecycle={row.original.lifecycle}
+        activeContract={row.original.activeContract}
+      />
+    ),
+    meta: { className: 'justify-end', ...smallColumnWidth },
   },
   {
     id: 'usable',
